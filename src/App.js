@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+import ProductList from './component/ProsuctList/ProductList'
+import './App.css';
+import AddProduct from './component/AddProduct/AddProduct'
+
+const App = () =>{
+  const [products, setProducts] = useState([
+      { id:1, title:"book 1" },
+      { id:2, title:"book 2" },
+      { id:3, title:"book 3" },
+  ])
+
+  const addProduct = (title) => {
+   const id = Math.floor(Math.random() * 10000)
+   const newProduct = {id, ...title }
+
+   setProducts([...products, newProduct])
+  }
+
+  const deleteProduct = (id) =>{
+   setProducts (products.filter((item)=> item.id !== id))
+  }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   
+    <div id="app" className='container'>
+        <AddProduct onAdd={addProduct} />
+        <ProductList products={products} onDelete={deleteProduct} />
     </div>
+   
   );
 }
 

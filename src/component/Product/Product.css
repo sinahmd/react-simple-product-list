@@ -1,0 +1,17 @@
+.product{
+    width: 200px;
+    height: 200px;
+    margin: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #848383;
+    flex-direction: column;
+    border-radius: 0.7rem;
+}
+.btn{
+    padding: 0.3rem;
+    background: #cbcbcb;
+    border: none;
+    border-radius: 0.5rem;
+}
